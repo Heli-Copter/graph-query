@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--Below three meta tags should come within first 1024 bytes of webpage-->
+	<!-- Below meta tag  specifies the charset that will be used in this document. If not specified, browser may misinterpret the character used. -->
+	<meta charset='utf-8'/> 
+	<!-- Below mentioned meta tag is an alternative to charset utf 8 meta tag-->
+    <!-- <meta http-equiv="Content-type" content="text/html; charset=utf-8"/> -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!--  Below meta says that the width of viewport should be equal to the device width and initial page zoom will be 1 times and the page shouldn't shrink to fit the small width devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Below is meta Description. Meta descriptions are HTML attributes that provide concise summaries of webpages. They commonly appear underneath the blue clickable links in a search engine results page (SERP).-->
+	<meta name="description" content="This application is meant to generate SQL queries according to the selected nodes of graph">
+	<link rel="manifest" href="/manifest.json">
+	<!-- Below tags will allow the web app to be added on home screen like a native app -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/png"/>
+</head>
+<body>
+	<noscript style="top: 50%; left: 50%; position: absolute; transform: translate(-50%, -50%); font-family: monospace; width: 100%; text-align: center;">
+		JavaScript is disabled on your browser, please enable JavaScript to make this app work.
+	</noscript>
+	<div id='app'></div>
+</body>
+</html>
