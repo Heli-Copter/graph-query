@@ -5,8 +5,8 @@ html {
   body {
     height: 100%;
     margin: 0;
-    #app {
-      height: 100%;
-    }
+    width: 100%;
+    border: 2px solid black;
+    box-sizing: border-box;
   }
 }

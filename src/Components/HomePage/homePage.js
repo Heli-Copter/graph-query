@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './homePage.scss';
+import Header from '../Header/header';
+import GraphComponent from '../GraphComponent/graphComponent';
 
 
 class HomePage extends React.Component {
@@ -11,7 +13,10 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <div>Entire Graph application will come here</div>
+      <div>
+      	<Header />
+      	<GraphComponent />
+      </div>
     );
   }
 }
