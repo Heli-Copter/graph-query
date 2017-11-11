@@ -10,8 +10,12 @@ import mockData from '../../utils/mockData.json';
 class HomePage extends React.Component {
     constructor() {
         super();
+        this.changeRootNode = this.changeRootNode.bind(this);
         this.state = {
-        	nodes: []
+        	nodes: [],
+            showConditionComponent: false,
+            showQueryComponent: false,
+            selectedRootNode: ''
         };
     }
 
@@ -22,6 +26,9 @@ class HomePage extends React.Component {
     	})
     	this.setState({nodes});
     }
+    changeRootNode (event) {
+        this.setState({selectedRootNode: event.target.value});
+    }
 
     render() {
         return (
@@ -29,18 +36,18 @@ class HomePage extends React.Component {
                 <div>
                     <Header/>
                     <select>
-                    <option value='' >Select root node</option>
+                    <option value='' onChange={this.changeRootNode}>Select root node</option>
                     {this.state.nodes.map((node, key) => {
                     	return <option key={key} value={node.id}>{node.displayName}</option>
                     })}
                     </select>
                 </div>
                 <div className="nonHeader">
-                    <ConditionComponent />
+                    {this.state.showConditionComponent && <ConditionComponent />}
                     <GraphComponent mockData = {mockData}/>
                 </div>
                 <div>
-                    <QueryComponent/>
+                {this.state.showQueryComponent && <QueryComponent />}
                 </div>
             </div>
         );
