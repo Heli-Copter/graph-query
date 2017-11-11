@@ -15,13 +15,13 @@ class HomePage extends React.Component {
   render() {
     return (
       <div>
-      	<div>
-      		<Header />
-      	</div>
-      	<div className = 'nonHeader'>
-      		<ConditionComponent />
-      		<GraphComponent />
-      	</div>
+        <div>
+          <Header />
+        </div>
+        <div className="nonHeader">
+          <ConditionComponent />
+          <GraphComponent />
+        </div>
       </div>
     );
   }
