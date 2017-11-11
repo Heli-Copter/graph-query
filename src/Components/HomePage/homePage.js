@@ -17,10 +17,14 @@ class HomePage extends React.Component {
       <div>
         <div>
           <Header />
+          <select />
         </div>
         <div className="nonHeader">
           <ConditionComponent />
           <GraphComponent />
+        </div>
+        <div>
+          <QueryComponent />
         </div>
       </div>
     );

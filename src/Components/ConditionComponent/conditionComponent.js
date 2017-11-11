@@ -9,7 +9,9 @@ class ConditionComponent extends React.Component {
 
   render() {
     return (
-      <div>Condition Component</div>
+      <div className="conditionComponent">
+      	Condition Component
+      </div>
     );
   }
 }
