@@ -14,11 +14,11 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler, {
     path: '/__webpack_hmr'
 }));
-app.get('/*', function(req, res) {
+app.get('/*', function (req, res) {
     res.redirect('/');
 });
 app.use(express.static(path.join(__dirname, 'build')));
 app.set('port', 3000);
-var server = app.listen(app.get('port'), function() {
+var server = app.listen(app.get('port'), function () {
     console.log('Running express server at localhost:' + server.address().port);
 });

@@ -27,4 +27,4 @@ OfflinePluginRuntime.install();
 // graph.traverseBFS('F', function(vertex) { console.log(vertex); });
 
 
-ReactDOM.render(<Homepage />, document.getElementById('app'));
+ReactDOM.render(<Homepage/>, document.getElementById('app'));

@@ -1,8 +1,8 @@
 var webpack = require('webpack'),
     path = require('path'),
     HtmlWebpackPlugin = require('html-webpack-plugin')
-    CleanWebpackPlugin = require('clean-webpack-plugin'),
-        OfflinePlugin = require('offline-plugin');
+CleanWebpackPlugin = require('clean-webpack-plugin'),
+    OfflinePlugin = require('offline-plugin');
 
 module.exports = {
     entry: {

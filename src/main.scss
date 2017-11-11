@@ -1,3 +1,6 @@
+/*@import "../node_modules/font-awesome/scss/font-awesome.scss";
+*/
+@import './utils/cytoscape.js-panzoom.css';
 html {
   height: 100%;
   font-family: sans-serif;
@@ -6,7 +9,8 @@ html {
     height: 100%;
     margin: 0;
     width: 100%;
-/*    box-sizing: border-box;
-*/        background-color: #ececeb;
+    /*    box-sizing: border-box;
+    */
+    background-color: #ececeb;
   }
 }
