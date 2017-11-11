@@ -4,6 +4,7 @@ import './homePage.scss';
 import Header from '../Header/header';
 import GraphComponent from '../GraphComponent/graphComponent';
 import ConditionComponent from '../ConditionComponent/conditionComponent';
+import QueryComponent from '../QueryComponent/queryComponent';
 
 
 class HomePage extends React.Component {
