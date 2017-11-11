@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './homePage.scss';
 import Header from '../Header/header';
 import GraphComponent from '../GraphComponent/graphComponent';
+import ConditionComponent from '../ConditionComponent/conditionComponent';
 
 
 class HomePage extends React.Component {
@@ -14,8 +15,13 @@ class HomePage extends React.Component {
   render() {
     return (
       <div>
-      	<Header />
-      	<GraphComponent />
+      	<div>
+      		<Header />
+      	</div>
+      	<div className = 'nonHeader'>
+      		<ConditionComponent />
+      		<GraphComponent />
+      	</div>
       </div>
     );
   }
