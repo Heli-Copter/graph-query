@@ -12,6 +12,7 @@ class HomePage extends React.Component {
     super();
     this.changeRootNode = this.changeRootNode.bind(this);
     this.modifyQuerySelectParams = this.modifyQuerySelectParams.bind(this);
+    this.modifyQueryWhereParams = this.modifyQueryWhereParams.bind(this);
     this.state = {
         	nodes: [],
       selectedRootNode: '',
@@ -37,6 +38,10 @@ class HomePage extends React.Component {
     this.setState({ querySelectParams });
   }
 
+  modifyQueryWhereParams(param) {
+    console.log('*****', Object.keys(param).length, param);
+  }
+
   render() {
     return (
       <div>
@@ -48,7 +53,7 @@ class HomePage extends React.Component {
           </select>
         </div>
         <div className="nonHeader">
-          {this.state.querySelectParams.length > 0 && <ConditionComponent />}
+          {this.state.querySelectParams.length > 0 && <ConditionComponent mockData={mockData} modifyQueryWhereParams={this.modifyQueryWhereParams} />}
           <GraphComponent querySelectParams={this.state.querySelectParams} modifyQuerySelectParams={this.modifyQuerySelectParams} mockData={mockData} selectedRootNode={this.state.selectedRootNode} />
         </div>
         <div>

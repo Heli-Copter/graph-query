@@ -1,0 +1,21 @@
+.condition {
+	display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+	select, input {
+	    width: 75px;
+	    margin: 0;
+	}
+	.add {
+		cursor: pointer;
+		width: 20px;
+		height: 20px;
+		content: url('../../../assets/add.png');
+	}
+	.remove {
+		cursor: pointer;
+		width: 20px;
+		height: 20px;
+		content: url('../../../assets/remove.png');
+	}
+}

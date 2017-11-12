@@ -3,5 +3,10 @@
   margin-right: 25px;
   width: 30%;
   box-shadow: 1px 1px 3px #888989;
-  padding: 2px;
+  padding: 5px;
+
+  select {
+    min-width: initial;
+    margin: 0;
+  }
 }
