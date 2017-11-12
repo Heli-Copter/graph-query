@@ -10,7 +10,7 @@ class Header extends React.Component {
 
     render() {
         return (
-            <h1 className="heading">Graph Query - The query generator for graph data structure.</h1>
+            <h1 className="heading">Graph Query</h1>
         );
     }
 }

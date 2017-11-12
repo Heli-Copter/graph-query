@@ -35,8 +35,8 @@ class HomePage extends React.Component {
             <div>
                 <div>
                     <Header/>
-                    <select>
-                    <option value='' onChange={this.changeRootNode}>Select root node</option>
+                    <select value={this.state.selectedRootNode} onChange={this.changeRootNode}>
+                    <option value=''>Select root node</option>
                     {this.state.nodes.map((node, key) => {
                     	return <option key={key} value={node.id}>{node.displayName}</option>
                     })}
@@ -44,7 +44,7 @@ class HomePage extends React.Component {
                 </div>
                 <div className="nonHeader">
                     {this.state.showConditionComponent && <ConditionComponent />}
-                    <GraphComponent mockData = {mockData}/>
+                    <GraphComponent mockData = {mockData} selectedRootNode = {this.state.selectedRootNode} />
                 </div>
                 <div>
                 {this.state.showQueryComponent && <QueryComponent />}
