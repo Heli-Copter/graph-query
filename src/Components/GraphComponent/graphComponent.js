@@ -8,7 +8,9 @@ import panzoom from '../../utils/cytoscape-panzoom';
 class GraphComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            clickedNodeId: ''
+        };
     }
 
     componentDidMount() {
@@ -50,7 +52,7 @@ class GraphComponent extends React.Component {
             ],
 
             layout: {
-                name: 'breadthfirst',
+                name: 'cose',
                 // zoom: this.state.zoom,
                 fit: true, // whether to fit to viewport
                 padding: 30, // fit padding
@@ -68,6 +70,9 @@ class GraphComponent extends React.Component {
                 }, // transform a given node position. Useful for changing flow direction in discrete layouts
             },
 
+        });
+        cy.nodes().on("click", function(event){
+            this.setState({clickedNodeId: event.target._private.data.id});
         });
         cy.panzoom();
         if(selectedRootNode) {
