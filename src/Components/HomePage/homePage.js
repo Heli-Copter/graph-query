@@ -51,7 +51,7 @@ class HomePage extends React.Component {
                 </div>
                 <div className="nonHeader">
                     {this.state.querySelectParams.length > 0 && <ConditionComponent />}
-                    <GraphComponent modifyQuerySelectParams = {this.modifyQuerySelectParams} mockData = {mockData} selectedRootNode = {this.state.selectedRootNode} />
+                    <GraphComponent querySelectParams={this.state.querySelectParams} modifyQuerySelectParams = {this.modifyQuerySelectParams} mockData = {mockData} selectedRootNode = {this.state.selectedRootNode} />
                 </div>
                 <div>
                 {this.state.querySelectParams.length > 0 && <QueryComponent querySelectParams={this.state.querySelectParams} />}

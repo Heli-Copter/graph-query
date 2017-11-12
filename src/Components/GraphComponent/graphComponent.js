@@ -11,15 +11,35 @@ class GraphComponent extends React.Component {
         _this = this;
         this.removeClickedNode = this.removeClickedNode.bind(this);
         this.onPropSelect = this.onPropSelect.bind(this);
+        this.updateSelectedProps = this.updateSelectedProps.bind(this);
         this.state = {
             clickedNodeId: '',
-            clickedNodePath: ''
+            clickedNodePath: '',
+            checkedProps: {}
         };
     }
 
     componentDidMount() {
         panzoom(cytoscape)
+        this.updateSelectedProps();
         this.renderGraph(this.props.mockData.elements);
+    }
+
+    updateSelectedProps() {
+        if(this.state.clickedNodePath.length) {
+            let checkedProps = this.state.checkedProps;
+            var str = '';
+             this.state.clickedNodePath.map((elem, key) => {
+                str = key !== 0 ? str + '.' + elem : elem;
+            })
+            Object.keys(this.props.mockData.elements[0].data).map((prop) => {
+                checkedProps[prop] = false;
+                this.props.querySelectParams.map((param) => {
+                    checkedProps[prop] = prop === param.replace(str + '.',"") ? true : checkedProps[prop];
+                });
+            });
+            this.setState({checkedProps});
+        }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -87,7 +107,7 @@ class GraphComponent extends React.Component {
                         clickedNodePath.push(node);
                     }
                 })
-                _this.setState({clickedNodePath: clickedNodePath});
+                _this.setState({clickedNodePath}, _this.updateSelectedProps);
             });
         });
         cy.panzoom();
@@ -146,6 +166,9 @@ class GraphComponent extends React.Component {
             str = key !== 0 ? str + '.' + elem : elem;
         })
         this.props.modifyQuerySelectParams(str + '.' + event.target.name);
+        let checkedProps = this.state.checkedProps;
+        checkedProps[event.target.name] = event.target.checked;
+        this.setState({checkedProps});
     }
 
     render() {
@@ -165,7 +188,7 @@ class GraphComponent extends React.Component {
                         {Object.keys(node.data).map((key, k) => {
                             return (
                                 <div className='nodeProperty' key={k}>
-                                    <div><input name={key} defaultChecked={this.state.checked} type='checkbox' onChange={this.onPropSelect} />
+                                    <div><input name={key} checked={this.state.checkedProps[key]} type='checkbox' onChange={this.onPropSelect} />
                                         <div className='nodeKey'>{key}</div>
                                     </div>
                                     <div>{node.data[key]}</div>
