@@ -10,7 +10,8 @@ class QueryComponent extends React.Component {
     render() {
         return (
             <div className='queryComponent'>
-                SELECT {this.props.querySelectParams.join()}
+                <div>SELECT {this.props.querySelectParams.join()}</div>
+                <button className='run'>Run</button>
             </div>
         );
     }

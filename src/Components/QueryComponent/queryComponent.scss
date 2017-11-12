@@ -6,4 +6,16 @@
   padding: 10px;
   border-radius: 3px;
   box-shadow: 1px 1px 3px #888989;
+  position: relative;
+
+  .run {
+      position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #cccccc;
+    border-radius: 5px;
+    font-size: 12px;
+    width: 80px;
+    outline: none;
+  }
 }
