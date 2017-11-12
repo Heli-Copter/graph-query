@@ -12,6 +12,7 @@ class GraphComponent extends React.Component {
         this.removeClickedNode = this.removeClickedNode.bind(this);
         this.onPropSelect = this.onPropSelect.bind(this);
         this.updateSelectedProps = this.updateSelectedProps.bind(this);
+        this.resetClickedNode = this.resetClickedNode.bind(this);
         this.state = {
             clickedNodeId: '',
             clickedNodePath: '',
@@ -48,6 +49,21 @@ class GraphComponent extends React.Component {
 
     removeClickedNode () {
         this.setState({clickedNodeId: '', clickedNodePath: ''});
+    }
+
+    resetClickedNode () {
+        let checkedProps = this.state.checkedProps;
+        var str = '';
+             this.state.clickedNodePath.map((elem, key) => {
+                str = key !== 0 ? str + '.' + elem : elem;
+            })
+        Object.keys(checkedProps).map((prop) => {
+            if(checkedProps[prop]) {
+                this.props.modifyQuerySelectParams(str + '.' + prop);
+              checkedProps[prop] = false;  
+          }
+        })
+        this.setState({checkedProps});
     }
 
     renderGraph (dataForDisplay, selectedRootNode) {
@@ -180,7 +196,7 @@ class GraphComponent extends React.Component {
                     <div className='nodeHeading'>
                         <div>{node.data.displayName}</div>
                         <div className='nodeActions'>
-                            <div className='reset'></div>
+                            <div className='reset' onClick={this.resetClickedNode}></div>
                             <div className='close' onClick={this.removeClickedNode}></div>
                         </div>
                     </div>
