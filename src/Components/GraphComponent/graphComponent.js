@@ -113,9 +113,42 @@ class GraphComponent extends React.Component {
     }
 
     render() {
+        let node = {
+      "data": {
+        "id": "A",
+        "displayName": "A",
+        "score": 23,
+        "total": 34,
+        "marks": 90,
+        "rating": 5,
+        "Grade": 'B'
+
+      }
+    };
         return (
             <div className="graphContainer">
                 <div id="cy"/>
+                <div className='propertySelector'>
+                    <div className='nodeHeading'>
+                        <div>{node.data.displayName}</div>
+                        <div className='nodeActions'>
+                            <div>o</div>
+                            <div>x</div>
+                        </div>
+                    </div>
+                    <div>
+                        {Object.keys(node.data).map((key, k) => {
+                            return (
+                                <div className='nodeProperty' key={k}>
+                                    <div><input type='checkbox' />
+                                        <div className='nodeKey'>{key}</div>
+                                    </div>
+                                    <div>{node.data[key]}</div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
             </div>
         );
     }

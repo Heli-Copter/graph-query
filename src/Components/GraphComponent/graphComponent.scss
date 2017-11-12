@@ -14,36 +14,39 @@
       right: 50px;
     }
 	}
-	.fittingOptions {
-		position: absolute;
-		bottom: 20px;
-		right: 20px;
-		display: flex;
-    cursor: pointer;
+	
+  .propertySelector {
+        min-height: 100px;
+    min-width: 100px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+        background-color: white;
+    background-image: linear-gradient(to bottom, #FFFFFF, #e2e2e2);
+    border-bottom: 1px solid #CCC;
   }
 
-  .fittingOptions > div:nth-child(2) {
-    border: 1px solid black;
-    padding: 3px;
-    background-color: lightgrey;
-  }
+  .nodeHeading {
+    background-color: white;
+    background-image: linear-gradient(to bottom, #FFFFFF, #e2e2e2);
+    border-bottom: 1px solid #CCC;
+    line-height: 25px;
+        padding: 0 0 0 20px;
+        display: flex;
+        justify-content: space-between;
 
-  .fittingOptions > div:nth-child(1) {
-    border: 1px solid black;
-    padding: 3px 5px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    background-color: lightgrey;
+        .nodeActions > div {
+          display: inline-block;
+          margin-right: 10px;
+        }
   }
-
-  .fittingOptions > div:nth-child(3) {
-    border: 1px solid black;
-    padding: 3px 5px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: lightgrey;
-  }
-  .fa-minus, .fa-plus, .fa-expand {
-    content: '+';
+  .nodeProperty {
+    display: flex;
+    padding: 3px 15px;
+    justify-content: space-between;
+    .nodeKey {
+        margin: 0 24px 0 7px;
+        display: inline-block;
+    }
   }
 }
