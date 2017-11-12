@@ -27,7 +27,7 @@ class HomePage extends React.Component {
     	this.setState({nodes});
     }
     changeRootNode (event) {
-        this.setState({selectedRootNode: event.target.value});
+        this.setState({selectedRootNode: event.target.value, querySelectParams: [], });
     }
 
     modifyQuerySelectParams (param) {
