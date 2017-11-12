@@ -1,3 +1,21 @@
+.fa.fa-plus {
+      width: 11px;
+    height: 11px;
+  content: url('../../../assets/plus.png');
+}
+
+.fa.fa-minus {
+  width: 11px;
+    height: 11px;
+  content: url('../../../assets/minus.png');
+}
+
+.fa.fa-expand {
+  width: 11px;
+    height: 11px;
+  content: url('../../../assets/fit-to-width.png');
+}
+
 .graphContainer {
   height: 500px;
   border: 1px solid #f1eaea;
@@ -35,10 +53,25 @@
         display: flex;
         justify-content: space-between;
 
-        .nodeActions > div {
-          display: inline-block;
-          margin-right: 10px;
-          cursor: pointer;
+        .nodeActions {
+          .reset {
+            display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    content: url('../../../assets/reset.png');
+          }
+          .close {
+            display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+          content: url('../../../assets/delete.png');
+          }
         }
   }
   .nodeProperty {

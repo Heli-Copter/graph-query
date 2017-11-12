@@ -117,7 +117,6 @@ class GraphComponent extends React.Component {
                     })
                 }
             });
-            console.log(allEdges, newTreeData, mappingArr);
             this.renderGraph(newTreeData.elements);
         }
         
@@ -153,8 +152,8 @@ class GraphComponent extends React.Component {
                     <div className='nodeHeading'>
                         <div>{node.data.displayName}</div>
                         <div className='nodeActions'>
-                            <div>o</div>
-                            <div onClick={this.removeClickedNode}>x</div>
+                            <div className='reset'></div>
+                            <div className='close' onClick={this.removeClickedNode}></div>
                         </div>
                     </div>
                     <div>
