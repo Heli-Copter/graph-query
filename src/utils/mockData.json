@@ -3,7 +3,7 @@
     {
     "data": {
       "id": "A",
-      "displayName": "A",
+      "displayName": "Alfa",
       "score": 36,
       "total": 37,
       "marks": 22,
@@ -14,7 +14,7 @@
   {
     "data": {
       "id": "B",
-      "displayName": "B",
+      "displayName": "Bravo",
       "score": 27,
       "total": 29,
       "marks": 33,
@@ -25,7 +25,7 @@
   {
     "data": {
       "id": "C",
-      "displayName": "C",
+      "displayName": "Charlie",
       "score": 27,
       "total": 34,
       "marks": 33,
@@ -36,7 +36,7 @@
   {
     "data": {
       "id": "D",
-      "displayName": "D",
+      "displayName": "Delta",
       "score": 21,
       "total": 20,
       "marks": 31,
@@ -47,7 +47,7 @@
   {
     "data": {
       "id": "E",
-      "displayName": "E",
+      "displayName": "Echo",
       "score": 20,
       "total": 21,
       "marks": 30,
@@ -58,7 +58,7 @@
   {
     "data": {
       "id": "F",
-      "displayName": "F",
+      "displayName": "Foxtrot",
       "score": 23,
       "total": 20,
       "marks": 22,
@@ -69,7 +69,7 @@
   {
     "data": {
       "id": "G",
-      "displayName": "G",
+      "displayName": "Golf",
       "score": 30,
       "total": 31,
       "marks": 22,

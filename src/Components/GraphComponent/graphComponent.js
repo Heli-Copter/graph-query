@@ -10,6 +10,7 @@ class GraphComponent extends React.Component {
         super(props);
         _this = this;
         this.removeClickedNode = this.removeClickedNode.bind(this);
+        this.onPropSelect = this.onPropSelect.bind(this);
         this.state = {
             clickedNodeId: '',
             clickedNodePath: ''
@@ -140,7 +141,11 @@ class GraphComponent extends React.Component {
     }
 
     onPropSelect(event) {
-
+        let str = '';
+        this.state.clickedNodePath.map((elem, key) => {
+            str = key !== 0 ? str + '.' + elem : elem;
+        })
+        this.props.modifyQuerySelectParams(str + '.' + event.target.name);
     }
 
     render() {

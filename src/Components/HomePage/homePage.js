@@ -11,11 +11,11 @@ class HomePage extends React.Component {
     constructor() {
         super();
         this.changeRootNode = this.changeRootNode.bind(this);
+        this.modifyQuerySelectParams = this.modifyQuerySelectParams.bind(this);
         this.state = {
         	nodes: [],
-            showConditionComponent: false,
-            showQueryComponent: false,
-            selectedRootNode: ''
+            selectedRootNode: '',
+            querySelectParams: []
         };
     }
 
@@ -28,6 +28,13 @@ class HomePage extends React.Component {
     }
     changeRootNode (event) {
         this.setState({selectedRootNode: event.target.value});
+    }
+
+    modifyQuerySelectParams (param) {
+        let querySelectParams = this.state.querySelectParams;
+        let index = querySelectParams.indexOf(param);
+        index === -1 ? querySelectParams.push(param) : querySelectParams.splice(index, 1);
+        this.setState({querySelectParams});
     }
 
     render() {
@@ -43,11 +50,11 @@ class HomePage extends React.Component {
                     </select>
                 </div>
                 <div className="nonHeader">
-                    {this.state.showConditionComponent && <ConditionComponent />}
-                    <GraphComponent mockData = {mockData} selectedRootNode = {this.state.selectedRootNode} />
+                    {this.state.querySelectParams.length > 0 && <ConditionComponent />}
+                    <GraphComponent modifyQuerySelectParams = {this.modifyQuerySelectParams} mockData = {mockData} selectedRootNode = {this.state.selectedRootNode} />
                 </div>
                 <div>
-                {this.state.showQueryComponent && <QueryComponent />}
+                {this.state.querySelectParams.length > 0 && <QueryComponent querySelectParams={this.state.querySelectParams} />}
                 </div>
             </div>
         );

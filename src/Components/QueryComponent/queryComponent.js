@@ -10,7 +10,7 @@ class QueryComponent extends React.Component {
     render() {
         return (
             <div className='queryComponent'>
-                Query Component will come here.
+                SELECT {this.props.querySelectParams.join()}
             </div>
         );
     }
