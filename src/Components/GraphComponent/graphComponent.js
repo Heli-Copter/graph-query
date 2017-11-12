@@ -11,7 +11,8 @@ class GraphComponent extends React.Component {
         _this = this;
         this.removeClickedNode = this.removeClickedNode.bind(this);
         this.state = {
-            clickedNodeId: ''
+            clickedNodeId: '',
+            clickedNodePath: ''
         };
     }
 
@@ -25,7 +26,7 @@ class GraphComponent extends React.Component {
     }
 
     removeClickedNode () {
-        this.setState({clickedNodeId: ''});
+        this.setState({clickedNodeId: '', clickedNodePath: ''});
     }
 
     renderGraph (dataForDisplay, selectedRootNode) {
@@ -58,7 +59,7 @@ class GraphComponent extends React.Component {
             ],
 
             layout: {
-                name: 'cose',
+                name: 'circle',
                 // zoom: this.state.zoom,
                 fit: true, // whether to fit to viewport
                 padding: 30, // fit padding
@@ -78,7 +79,15 @@ class GraphComponent extends React.Component {
 
         });
         cy.nodes().on("click", function(event){
-            _this.props.selectedRootNode && _this.setState({clickedNodeId: event.target._private.data.id});
+            _this.props.selectedRootNode && _this.setState({clickedNodeId: event.target._private.data.id}, () => {
+                let clickedNodePath = [];
+                Object.keys(cy.elements().dijkstra('#' + _this.props.selectedRootNode).pathTo( cy.$('#' + _this.state.clickedNodeId) )._private.map._obj).map( (node, key) => {
+                    if(key === 0 || key % 2 == 0) {
+                        clickedNodePath.push(node);
+                    }
+                })
+                _this.setState({clickedNodePath: clickedNodePath});
+            });
         });
         cy.panzoom();
         if(selectedRootNode) {
@@ -93,12 +102,14 @@ class GraphComponent extends React.Component {
                 directed: false
             });
             let newTreeData = JSON.parse(JSON.stringify(treeDataCreated));
+            let allEdges = [];
             treeDataCreated.elements.map(node => {
                 if(node.data.level !== 0) {
                     var edgeCreated = false;
                     mappingArr[node.data.level -1].map((s) => {
                         this.props.mockData.elements.map((mock) => {
                             if(mock.data.id === String(node.data.id) + String(s) || mock.data.id === String(s) + String(node.data.id)) {
+                                allEdges.push(mock.data.id);
                                 !edgeCreated && newTreeData.elements.push(mock);  
                                 edgeCreated  = true;
                             }
@@ -106,6 +117,7 @@ class GraphComponent extends React.Component {
                     })
                 }
             });
+            console.log(allEdges, newTreeData, mappingArr);
             this.renderGraph(newTreeData.elements);
         }
         
@@ -128,6 +140,10 @@ class GraphComponent extends React.Component {
         return returnValue;
     }
 
+    onPropSelect(event) {
+
+    }
+
     render() {
         let node = this.ff();
         return (
@@ -145,7 +161,7 @@ class GraphComponent extends React.Component {
                         {Object.keys(node.data).map((key, k) => {
                             return (
                                 <div className='nodeProperty' key={k}>
-                                    <div><input type='checkbox' />
+                                    <div><input name={key} defaultChecked={this.state.checked} type='checkbox' onChange={this.onPropSelect} />
                                         <div className='nodeKey'>{key}</div>
                                     </div>
                                     <div>{node.data[key]}</div>
