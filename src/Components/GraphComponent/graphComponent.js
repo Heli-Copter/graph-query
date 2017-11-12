@@ -4,10 +4,12 @@ import cytoscape from 'cytoscape';
 import panzoom from '../../utils/cytoscape-panzoom';
 
 
-
+ var _this;
 class GraphComponent extends React.Component {
     constructor(props) {
         super(props);
+        _this = this;
+        this.removeClickedNode = this.removeClickedNode.bind(this);
         this.state = {
             clickedNodeId: ''
         };
@@ -20,6 +22,10 @@ class GraphComponent extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         this.props.selectedRootNode !== nextProps.selectedRootNode && this.renderGraph(this.props.mockData.elements, nextProps.selectedRootNode);
+    }
+
+    removeClickedNode () {
+        this.setState({clickedNodeId: ''});
     }
 
     renderGraph (dataForDisplay, selectedRootNode) {
@@ -72,7 +78,7 @@ class GraphComponent extends React.Component {
 
         });
         cy.nodes().on("click", function(event){
-            this.setState({clickedNodeId: event.target._private.data.id});
+            _this.props.selectedRootNode && _this.setState({clickedNodeId: event.target._private.data.id});
         });
         cy.panzoom();
         if(selectedRootNode) {
@@ -112,28 +118,27 @@ class GraphComponent extends React.Component {
         //this.props.selectedRootNode && bfs.path.select();
     }
 
-    render() {
-        let node = {
-      "data": {
-        "id": "A",
-        "displayName": "A",
-        "score": 23,
-        "total": 34,
-        "marks": 90,
-        "rating": 5,
-        "Grade": 'B'
+    ff () {
+        let returnValue;
+        this.props.mockData.elements.map((element) => {
+            if(element.data.id === this.state.clickedNodeId) {
+                returnValue = element;
+            }
+        });
+        return returnValue;
+    }
 
-      }
-    };
+    render() {
+        let node = this.ff();
         return (
             <div className="graphContainer">
                 <div id="cy"/>
-                <div className='propertySelector'>
+                {this.state.clickedNodeId && this.props.selectedRootNode && <div className='propertySelector'>
                     <div className='nodeHeading'>
                         <div>{node.data.displayName}</div>
                         <div className='nodeActions'>
                             <div>o</div>
-                            <div>x</div>
+                            <div onClick={this.removeClickedNode}>x</div>
                         </div>
                     </div>
                     <div>
@@ -148,7 +153,7 @@ class GraphComponent extends React.Component {
                             );
                         })}
                     </div>
-                </div>
+                </div>}
             </div>
         );
     }
