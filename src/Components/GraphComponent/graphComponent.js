@@ -8,9 +8,7 @@ import panzoom from '../../utils/cytoscape-panzoom';
 class GraphComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            treeData : JSON.parse(JSON.stringify(this.props.mockData))
-        };
+        this.state = {};
     }
 
     componentDidMount() {
@@ -52,7 +50,7 @@ class GraphComponent extends React.Component {
             ],
 
             layout: {
-                name: 'cose',
+                name: 'breadthfirst',
                 // zoom: this.state.zoom,
                 fit: true, // whether to fit to viewport
                 padding: 30, // fit padding
@@ -72,31 +70,34 @@ class GraphComponent extends React.Component {
 
         });
         cy.panzoom();
-        let treeDataCreated = {elements: []};
-        let mappingArr = {};
-        var bfs = selectedRootNode && cy.elements().bfs({
-            roots: '#' + selectedRootNode,
-            visit: function(v, e, u, i, depth){
-                mappingArr[depth] = mappingArr[depth] ? [ ...mappingArr[depth], v.id()] : [v.id()];
-                treeDataCreated.elements.push({data: {id: v.id(), displayName: v._private.data.displayName, level: depth}});
-            },
-            directed: false
-        });
-        let newTreeData = JSON.parse(JSON.stringify(treeDataCreated));
-        treeDataCreated.elements.map(node => {
-            if(node.data.level !== 0) {
-                var edgeCreated = false;
-                mappingArr[node.data.level -1].map((s) => {
-                    this.props.mockData.elements.map((mock) => {
-                        if(mock.data.id === String(node.data.id) + String(s) || mock.data.id === String(s) + String(node.data.id)) {
-                            !edgeCreated && newTreeData.elements.push(mock);  
-                            edgeCreated  = true;
-                        }
-                    });
-                })
-            }
-        });
-        this.setState({treeData: newTreeData});
+        if(selectedRootNode) {
+            let treeDataCreated = {elements: []};
+            let mappingArr = {};
+            var bfs = cy.elements().bfs({
+                roots: '#' + selectedRootNode,
+                visit: function(v, e, u, i, depth){
+                    mappingArr[depth] = mappingArr[depth] ? [ ...mappingArr[depth], v.id()] : [v.id()];
+                    treeDataCreated.elements.push({data: {id: v.id(), displayName: v._private.data.displayName, level: depth}});
+                },
+                directed: false
+            });
+            let newTreeData = JSON.parse(JSON.stringify(treeDataCreated));
+            treeDataCreated.elements.map(node => {
+                if(node.data.level !== 0) {
+                    var edgeCreated = false;
+                    mappingArr[node.data.level -1].map((s) => {
+                        this.props.mockData.elements.map((mock) => {
+                            if(mock.data.id === String(node.data.id) + String(s) || mock.data.id === String(s) + String(node.data.id)) {
+                                !edgeCreated && newTreeData.elements.push(mock);  
+                                edgeCreated  = true;
+                            }
+                        });
+                    })
+                }
+            });
+            this.renderGraph(newTreeData.elements);
+        }
+        
 
 
         //this.props.selectedRootNode && var path = bfs.path; // path to found node
