@@ -16,6 +16,10 @@ class Condition extends React.Component {
     });
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({prop: nextProps.state.prop, op: nextProps.state.op, val: nextProps.state.val});
+  }
+
   addCondn() {
     this.props.addCondition();
   }
@@ -28,14 +32,14 @@ class Condition extends React.Component {
     return (
       <div className="condition" style={{ marginLeft: `${String((this.props.id.match(/\./g) || []).length * 20)}px` }}>
         <div>
-          <select name="prop" onChange={this.inputChange}>
+          <select name="prop" value={this.state.prop} onChange={this.inputChange}>
             <option value="">Select Prop</option>
             {this.props.propOptions.map((opt, key) => <option key={key} value={opt.id}>{opt.name}</option>)}
           </select>
         </div>
 
         <div>
-          <select name="op" onChange={this.inputChange}>
+          <select name="op" value={this.state.op} onChange={this.inputChange}>
             <option value="">Select Operator</option>
             <option value="is">is</option>
             <option value="isNot">is not</option>

@@ -1,6 +1,7 @@
 import React from 'react';
 import './conditionComponent.scss';
 import Condition from '../Condition/condition';
+import levelCompare from '../../utils/levelCompare';
 
 class ConditionComponent extends React.Component {
   constructor() {
@@ -58,8 +59,8 @@ class ConditionComponent extends React.Component {
     return (
       <div className="conditionComponent">
         {
-          Object.keys(this.state.condn).map((id, key) => (<Condition
-            key={key}
+          Object.keys(this.state.condn).sort(levelCompare).map((id) => (<Condition
+            key={id}
             id={id}
             state={this.state.condn[id]}
             handleChange={(state) => { this.handleChange(state, id); }}
