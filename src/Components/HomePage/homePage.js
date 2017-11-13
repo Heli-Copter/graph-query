@@ -4,15 +4,20 @@ import Header from '../Header/header';
 import GraphComponent from '../GraphComponent/graphComponent';
 import ConditionComponent from '../ConditionComponent/conditionComponent';
 import QueryComponent from '../QueryComponent/queryComponent';
-import mockData from '../../utils/mockData.json';
+import mockdata from '../../utils/mockData.json';
 
-
+var mockData;
 class HomePage extends React.Component {
     constructor() {
         super();
+        mockData = localStorage['mockData'] && JSON.parse(localStorage['mockData']) || mockdata;
         this.changeRootNode = this.changeRootNode.bind(this);
         this.modifyQuerySelectParams = this.modifyQuerySelectParams.bind(this);
         this.modifyQueryWhereParams = this.modifyQueryWhereParams.bind(this);
+        this.showChangeDataScreen = this.showChangeDataScreen.bind(this);
+        this.addNewData = this.addNewData.bind(this);
+        this.onNewDataChange = this.onNewDataChange.bind(this);
+        this.cancelAddNewData = this.cancelAddNewData.bind(this);
         this.operatorsMap = {
             is: '==',
             isNot: '!=',
@@ -24,6 +29,8 @@ class HomePage extends React.Component {
             selectedRootNode: '',
             querySelectParams: [],
             whereString: '',
+            showChangeDataScreen: false,
+            changedData: JSON.stringify(mockData, null, "\t")
         };
     }
 
@@ -70,6 +77,30 @@ class HomePage extends React.Component {
         str && this.setState({whereString: `WHERE ${str}`});
     }
 
+    showChangeDataScreen() {
+        this.setState({showChangeDataScreen: true});
+    }
+
+    addNewData () {
+        let data = this.state.changedData;
+        localStorage['mockData'] = data;
+        this.cancelAddNewData();
+        location.reload();
+    }
+
+    onNewDataChange(event) {
+        this.setState({changedData: event.target.value});
+    }
+
+    cancelAddNewData () {
+        this.setState({changedData: JSON.stringify(mockData, null, "\t"), showChangeDataScreen: false});
+    }
+
+    getOriginalData() {
+        localStorage['mockData'] = JSON.stringify(mockdata);
+        location.reload();
+    }
+
     render() {
         return (
             <div>
@@ -100,6 +131,25 @@ class HomePage extends React.Component {
                         querySelectParams={this.state.querySelectParams}
                     />}
                 </div>
+                <div className='changeData'>
+                    <span onClick = {this.showChangeDataScreen}>Change Graph Data </span>
+                    <span> | </span>
+                    <span onClick={this.getOriginalData}>Get Original Data </span>
+                </div>
+                {this.state.showChangeDataScreen && <div className='bg'>
+                    <div className='content'>
+                        <div className='changeDataHeader'>
+                            <h3>Modify JSON Data</h3>
+                            <div>
+                                <button onClick={this.addNewData}>Add Data</button>
+                                <button onClick={this.cancelAddNewData}>Cancel</button>
+                            </div>
+                        </div> 
+                        <textarea value={this.state.changedData} onChange = {this.onNewDataChange}/>
+                    </div>
+                </div>
+                }
+                
             </div>
         );
     }

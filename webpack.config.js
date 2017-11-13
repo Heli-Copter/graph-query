@@ -39,7 +39,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({compress: {warnings: false, drop_console: true}}),
+        //new webpack.optimize.UglifyJsPlugin({compress: {warnings: false, drop_console: true}}),
         new CleanWebpackPlugin(['build']),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
