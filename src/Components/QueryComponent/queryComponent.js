@@ -10,7 +10,7 @@ class QueryComponent extends React.Component {
   render() {
     return (
       <div className="queryComponent">
-        <div>SELECT {this.props.querySelectParams.join(', ')}</div>
+        <div>SELECT {this.props.querySelectParams.join(', ')} {this.props.whereString}</div>
         <button className="run">Run</button>
       </div>
     );

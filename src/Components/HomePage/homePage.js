@@ -13,10 +13,17 @@ class HomePage extends React.Component {
     this.changeRootNode = this.changeRootNode.bind(this);
     this.modifyQuerySelectParams = this.modifyQuerySelectParams.bind(this);
     this.modifyQueryWhereParams = this.modifyQueryWhereParams.bind(this);
+    this.operatorsMap = {
+      'is': '==',
+      'isNot': '!=',
+      'lessThan': '<',
+      'greaterThan': '>'
+    }
     this.state = {
         	nodes: [],
       selectedRootNode: '',
       querySelectParams: [],
+      whereString: ''
     };
   }
 
@@ -39,7 +46,27 @@ class HomePage extends React.Component {
   }
 
   modifyQueryWhereParams(param) {
-    console.log('*****', Object.keys(param).length, param);
+    let obj = {};
+    let xxx= [];
+    Object.keys(param).map((key) => {
+      if(param[key].prop !== '' && param[key].op !== '' && param[key].val !== '' ) {
+        obj[key] = `${param[key].prop} ${this.operatorsMap[param[key].op]} ${param[key].val}`;
+      }
+    });
+    Object.keys(obj).map((key) => {
+      let level = (key.match(/\./g) || []).length; 
+      xxx[level] = xxx[level] ? xxx[level] +' AND '+ obj[key]:obj[key];
+    });
+
+    let str = '';
+    let firstTime = true;
+    xxx.map((x) => {
+      if(x) {
+        str = firstTime ? x : str + ' AND ( ' + x + ' ) ';
+        firstTime = false;
+      }
+    })
+    str && this.setState({whereString: 'WHERE ' + str});
   }
 
   render() {
@@ -57,7 +84,7 @@ class HomePage extends React.Component {
           <GraphComponent querySelectParams={this.state.querySelectParams} modifyQuerySelectParams={this.modifyQuerySelectParams} mockData={mockData} selectedRootNode={this.state.selectedRootNode} />
         </div>
         <div>
-          {this.state.querySelectParams.length > 0 && <QueryComponent querySelectParams={this.state.querySelectParams} />}
+          {this.state.querySelectParams.length > 0 && <QueryComponent whereString = {this.state.whereString} querySelectParams={this.state.querySelectParams} />}
         </div>
       </div>
     );

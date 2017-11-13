@@ -44,7 +44,7 @@ class ConditionComponent extends React.Component {
 
   removeCondition(id) {
     const condn = this.state.condn;
-    const parallelIndex = JSON.stringify(condn[id.slice(0, -1) + Number(!(Number(id.slice(-1))))]);
+    const parallelIndex = condn[id.slice(0, -1) + Number(!(Number(id.slice(-1))))];
     if (parallelIndex) {
       condn[id.slice(0, -2)] = JSON.parse(JSON.stringify(parallelIndex));
     }
