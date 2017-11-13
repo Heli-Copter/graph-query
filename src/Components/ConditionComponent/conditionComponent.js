@@ -7,6 +7,7 @@ class ConditionComponent extends React.Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
+    this.conditionProperties = this.conditionProperties.bind(this);
     this.state = {
       propOptions: [],
       condn: { 0: { prop: '', op: '', val: '' } },
@@ -39,9 +40,10 @@ class ConditionComponent extends React.Component {
     delete condn[id];
     condn[`${String(id)}.0`] = prev;
     condn[`${String(id)}.1`] = { prop: '', op: '', val: '' };
-    this.setState({ condn });
-    this.props.modifyQueryWhereParams(condn);
-  }
+    this.setState({ condn }, () => {
+      this.props.modifyQueryWhereParams(condn);
+      this.conditionProperties();  
+    });  }
 
   removeCondition(id) {
     const condn = this.state.condn;
@@ -51,8 +53,34 @@ class ConditionComponent extends React.Component {
     }
     delete condn[id];
     delete condn[id.slice(0, -1) + Number(!(Number(id.slice(-1))))];
-    this.setState({ condn });
-    this.props.modifyQueryWhereParams(condn);
+    this.setState({ condn }, () => {
+      this.props.modifyQueryWhereParams(condn);
+      this.conditionProperties();
+    });
+  }
+
+  conditionProperties() {
+    // let propLength = new Set();
+    // let maxLength = 0;
+    // let notPresent = '';
+    // let newObject = {};
+    // let condn = this.state.condn;
+    // Object.keys(condn).sort(levelCompare).map((id) => {
+    //   propLength.add(id.length);
+    //   maxLength = Math.max(id.length, maxLength);
+    // });
+    // for(let i = 3; i < maxLength;i++) notPresent = !propLength.has(i) && i%2 !== 0 ? i : '';
+    // if(notPresent) {
+    //   Object.keys(condn).sort(levelCompare).map((id) => {
+    //   if(id.length > notPresent) {
+    //     let newID = id.substring(2);
+    //     newID = newID.indexOf('1') === 0 ? '0' + newID.substring(1) : newID;
+    //     newObject[newID] = condn[id];
+    //   } else if (id.length >= 3){
+    //     newObject[id] = condn[id];
+    //   }
+    // });
+    // }
   }
 
   render() {
