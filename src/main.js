@@ -5,4 +5,4 @@ import './main.scss';
 import Homepage from './Components/HomePage/homePage';
 
 OfflinePluginRuntime.install();
-ReactDOM.render(<Homepage />, document.getElementById('app'));
+ReactDOM.render(<Homepage/>, document.getElementById('app'));

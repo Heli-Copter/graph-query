@@ -2,19 +2,19 @@ import React from 'react';
 import './queryComponent.scss';
 
 class QueryComponent extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+    constructor() {
+        super();
+        this.state = {};
+    }
 
-  render() {
-    return (
-      <div className="queryComponent">
-        <div>SELECT {this.props.querySelectParams.join(', ')} {this.props.whereString}</div>
-        <button className="run">Run</button>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="queryComponent">
+                <div>SELECT {this.props.querySelectParams.join(', ')} {this.props.whereString}</div>
+                <button className="run">Run</button>
+            </div>
+        );
+    }
 }
 
 export default QueryComponent;

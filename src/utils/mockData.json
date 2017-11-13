@@ -1,82 +1,82 @@
 {
   "elements": [
     {
-    "data": {
-      "id": "A",
-      "displayName": "Alfa",
-      "score": 36,
-      "total": 37,
-      "marks": 22,
-      "rating": 3,
-      "grade": 27
-    }
-  },
-  {
-    "data": {
-      "id": "B",
-      "displayName": "Bravo",
-      "score": 27,
-      "total": 29,
-      "marks": 33,
-      "rating": 3,
-      "grade": 22
-    }
-  },
-  {
-    "data": {
-      "id": "C",
-      "displayName": "Charlie",
-      "score": 27,
-      "total": 34,
-      "marks": 33,
-      "rating": 3,
-      "grade": 30
-    }
-  },
-  {
-    "data": {
-      "id": "D",
-      "displayName": "Delta",
-      "score": 21,
-      "total": 20,
-      "marks": 31,
-      "rating": 3,
-      "grade": 37
-    }
-  },
-  {
-    "data": {
-      "id": "E",
-      "displayName": "Echo",
-      "score": 20,
-      "total": 21,
-      "marks": 30,
-      "rating": 3,
-      "grade": 24
-    }
-  },
-  {
-    "data": {
-      "id": "F",
-      "displayName": "Foxtrot",
-      "score": 23,
-      "total": 20,
-      "marks": 22,
-      "rating": 3,
-      "grade": 33
-    }
-  },
-  {
-    "data": {
-      "id": "G",
-      "displayName": "Golf",
-      "score": 30,
-      "total": 31,
-      "marks": 22,
-      "rating": 3,
-      "grade": 39
-    }
-  },
+      "data": {
+        "id": "A",
+        "displayName": "Alfa",
+        "score": 36,
+        "total": 37,
+        "marks": 22,
+        "rating": 3,
+        "grade": 27
+      }
+    },
+    {
+      "data": {
+        "id": "B",
+        "displayName": "Bravo",
+        "score": 27,
+        "total": 29,
+        "marks": 33,
+        "rating": 3,
+        "grade": 22
+      }
+    },
+    {
+      "data": {
+        "id": "C",
+        "displayName": "Charlie",
+        "score": 27,
+        "total": 34,
+        "marks": 33,
+        "rating": 3,
+        "grade": 30
+      }
+    },
+    {
+      "data": {
+        "id": "D",
+        "displayName": "Delta",
+        "score": 21,
+        "total": 20,
+        "marks": 31,
+        "rating": 3,
+        "grade": 37
+      }
+    },
+    {
+      "data": {
+        "id": "E",
+        "displayName": "Echo",
+        "score": 20,
+        "total": 21,
+        "marks": 30,
+        "rating": 3,
+        "grade": 24
+      }
+    },
+    {
+      "data": {
+        "id": "F",
+        "displayName": "Foxtrot",
+        "score": 23,
+        "total": 20,
+        "marks": 22,
+        "rating": 3,
+        "grade": 33
+      }
+    },
+    {
+      "data": {
+        "id": "G",
+        "displayName": "Golf",
+        "score": 30,
+        "total": 31,
+        "marks": 22,
+        "rating": 3,
+        "grade": 39
+      }
+    },
     {
       "data": {
         "id": "AB",

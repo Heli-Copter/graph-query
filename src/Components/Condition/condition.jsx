@@ -10,14 +10,14 @@ class Condition extends React.Component {
         this.state = this.props.state;
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({prop: nextProps.state.prop, op: nextProps.state.op, val: nextProps.state.val});
+    }
+
     inputChange(event) {
         this.setState({[event.target.name]: event.target.value}, () => {
             this.props.handleChange(this.state);
         });
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({prop: nextProps.state.prop, op: nextProps.state.op, val: nextProps.state.val});
     }
 
     addCondn() {
@@ -30,12 +30,16 @@ class Condition extends React.Component {
 
     render() {
         return (
-            <div className="condition"
-                 style={{marginLeft: `${String((this.props.id.match(/\./g) || []).length * 20)}px`}}>
+            <div
+                className="condition"
+                style={{marginLeft: `${String((this.props.id.match(/\./g) || []).length * 20)}px`}}
+            >
                 <div>
                     <select name="prop" value={this.state.prop} onChange={this.inputChange}>
                         <option value="">Select Prop</option>
-                        {this.props.propOptions.map((opt, key) => <option key={key} value={opt.id}>{opt.name}</option>)}
+                        {this.props.propOptions.map((opt, key) => (
+                            <option key={key} value={opt.id}>{opt.name}</option>
+                        ))}
                     </select>
                 </div>
 

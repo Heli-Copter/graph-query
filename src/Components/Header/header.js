@@ -3,16 +3,16 @@ import './header.scss';
 
 
 class Header extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+    constructor() {
+        super();
+        this.state = {};
+    }
 
-  render() {
-    return (
-      <h1 className="heading">Graph Query</h1>
-    );
-  }
+    render() {
+        return (
+            <h1 className="heading">Graph Query</h1>
+        );
+    }
 }
 
 export default Header;

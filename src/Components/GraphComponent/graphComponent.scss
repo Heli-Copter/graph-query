@@ -1,18 +1,18 @@
 .fa.fa-plus {
-      width: 11px;
-    height: 11px;
+  width: 11px;
+  height: 11px;
   content: url('../../../assets/plus.png');
 }
 
 .fa.fa-minus {
   width: 11px;
-    height: 11px;
+  height: 11px;
   content: url('../../../assets/minus.png');
 }
 
 .fa.fa-expand {
   width: 11px;
-    height: 11px;
+  height: 11px;
   content: url('../../../assets/fit-to-width.png');
 }
 
@@ -24,22 +24,22 @@
   box-shadow: 1px 1px 3px #888989;
   padding: 2px;
 
-	#cy {
-		height: 500px;
-		width: 100%;
+  #cy {
+    height: 500px;
+    width: 100%;
     .cy-panzoom {
       bottom: 220px;
       right: 50px;
     }
-	}
-	
+  }
+
   .propertySelector {
-        min-height: 100px;
+    min-height: 100px;
     min-width: 100px;
     position: absolute;
     right: 20px;
     top: 20px;
-        background-color: white;
+    background-color: white;
     background-image: linear-gradient(to bottom, #FFFFFF, #e2e2e2);
     border-bottom: 1px solid #CCC;
   }
@@ -49,38 +49,38 @@
     background-image: linear-gradient(to bottom, #FFFFFF, #e2e2e2);
     border-bottom: 1px solid #CCC;
     line-height: 25px;
-        padding: 0 0 0 20px;
-        display: flex;
-        justify-content: space-between;
+    padding: 0 0 0 20px;
+    display: flex;
+    justify-content: space-between;
 
-        .nodeActions {
-          .reset {
-            display: inline-block;
-    margin-right: 10px;
-    cursor: pointer;
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-    content: url('../../../assets/reset.png');
-          }
-          .close {
-            display: inline-block;
-    margin-right: 10px;
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-          content: url('../../../assets/delete.png');
-          }
-        }
+    .nodeActions {
+      .reset {
+        display: inline-block;
+        margin-right: 10px;
+        cursor: pointer;
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+        content: url('../../../assets/reset.png');
+      }
+      .close {
+        display: inline-block;
+        margin-right: 10px;
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+        content: url('../../../assets/delete.png');
+      }
+    }
   }
   .nodeProperty {
     display: flex;
     padding: 3px 15px;
     justify-content: space-between;
     .nodeKey {
-        margin: 0 24px 0 7px;
-        display: inline-block;
+      margin: 0 24px 0 7px;
+      display: inline-block;
     }
   }
 }
