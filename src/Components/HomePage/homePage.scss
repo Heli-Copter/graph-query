@@ -9,12 +9,22 @@ select {
   justify-content: space-around;
 }
 
-.changeData {
-	font-size: 12px;
-	text-align: center;
-	cursor: pointer;
-	margin-top: 20px;
-	margin-bottom: 20px;
+
+.footer {
+	display: flex;
+    font-size: 12px;
+    align-items: center;
+    justify-content: space-around;
+	.changeData {
+		text-align: center;
+		cursor: pointer;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+	.sourceCode {
+		cursor: pointer;
+	}
 }
 
 .bg {

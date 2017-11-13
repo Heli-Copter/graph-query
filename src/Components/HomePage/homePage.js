@@ -18,6 +18,7 @@ class HomePage extends React.Component {
         this.addNewData = this.addNewData.bind(this);
         this.onNewDataChange = this.onNewDataChange.bind(this);
         this.cancelAddNewData = this.cancelAddNewData.bind(this);
+        this.showSourceCode = this.showSourceCode.bind(this);
         this.operatorsMap = {
             is: '==',
             isNot: '!=',
@@ -101,6 +102,10 @@ class HomePage extends React.Component {
         location.reload();
     }
 
+    showSourceCode () {
+        window.open('https://github.com/Heli-Copter/graph-query.git','_newtab');
+    }
+
     render() {
         return (
             <div>
@@ -131,10 +136,13 @@ class HomePage extends React.Component {
                         querySelectParams={this.state.querySelectParams}
                     />}
                 </div>
-                <div className='changeData'>
-                    <span onClick = {this.showChangeDataScreen}>Change Graph Data </span>
-                    <span> | </span>
-                    <span onClick={this.getOriginalData}>Get Original Data </span>
+                <div className='footer'>
+                    <div className='changeData'>
+                        <span onClick = {this.showChangeDataScreen}>Change Graph Data </span>
+                        <span> | </span>
+                        <span onClick={this.getOriginalData}>Get Original Data </span>
+                    </div>
+                    <div className='sourceCode' onClick={this.showSourceCode}>Source Code</div>
                 </div>
                 {this.state.showChangeDataScreen && <div className='bg'>
                     <div className='content'>
