@@ -31,7 +31,7 @@ class Condition extends React.Component {
     render() {
         return (
             <div className="condition"
-                 style={{marginLeft: `${String((this.props.id.match(/\./g) || []).length * 20)}px`}}>
+                 style={{marginLeft: `${String((this.props.id.match(/\./g) || []).length * 10)}px`}}>
                 <div>
                     <select name="prop" value={this.state.prop} onChange={this.inputChange}>
                         <option value="">Select Prop</option>
