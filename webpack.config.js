@@ -39,6 +39,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.optimize.UglifyJsPlugin({compress: {warnings: false, drop_console: true}}),
         new CleanWebpackPlugin(['build']),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
@@ -54,6 +55,7 @@ module.exports = {
             title: 'Graph Query',
             template: 'index.ejs'
         }),
+        new webpack.DefinePlugin({'process.env': {NODE_ENV: JSON.stringify('production')}}),
         // either of the below two can be used, but hashed module is prferred for the production use
         new webpack.HashedModuleIdsPlugin(),  // uses the 4 digits hash, which is created by the file path of the module
         //new webpack.NamedModulesPlugin()  // uses the path to the module rather than a numerical identifier,
